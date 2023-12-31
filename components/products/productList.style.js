@@ -28,10 +28,9 @@ const styles = StyleSheet.create({
     flexGrow: 1, // Ensure the container takes the available space
     paddingTop: SIZES.xxlarge,
     paddingHorizontal: '1%',
-    // padding: SIZES.small, // Adjust padding as needed
   },
   separator: {
-    height: 10, // Reduce the height to decrease space between rows
+    height: 30, // Reduce the height to decrease space between rows
   },
 });
 

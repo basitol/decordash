@@ -22,7 +22,7 @@ const ProductRow = ({onCartUpdate}) => {
           )}
           keyExtractor={item => item._id}
           horizontal
-          contentContainerStyle={{columnGap: SIZES.medium}}
+          // contentContainerStyle={{columnGap: SIZES.medium}}
         />
       )}
     </View>
