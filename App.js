@@ -14,6 +14,7 @@ import {
   OrderScreen,
   SignUpScreen,
 } from './screens';
+import {StripeProvider} from '@stripe/stripe-react-native';
 
 const Stack = createNativeStackNavigator();
 

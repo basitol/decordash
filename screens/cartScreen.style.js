@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    // padding: SIZES.medium,
     marginHorizontal: 20,
   },
   upperRow: {
@@ -101,8 +100,12 @@ const styles = StyleSheet.create({
   },
   summaryText: {
     fontSize: SIZES.medium,
-    color: COLORS.black,
+    color: COLORS.gray,
     marginBottom: SIZES.small,
+  },
+  total: {
+    fontSize: SIZES.large,
+    fontWeight: 'bold',
   },
   orderInfoText: {
     fontSize: SIZES.medium,

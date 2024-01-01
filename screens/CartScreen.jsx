@@ -123,12 +123,19 @@ const CartScreen = () => {
       <View>
         {/* Order Summary */}
         <View style={styles.orderSummary}>
-          <Text style={styles.orderInfoHeader}>Order Summary</Text>
-          <Text style={styles.summaryText}>
-            Subtotal: ${subtotal.toFixed(2)}
-          </Text>
-          <Text style={styles.summaryText}>Tax: ${tax.toFixed(2)}</Text>
-          <Text style={styles.summaryText}>Total: ${total.toFixed(2)}</Text>
+          <Text style={styles.orderInfoHeader}>Order Info</Text>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={styles.summaryText}>Subtotal</Text>
+            <Text style={styles.summaryText}>${subtotal.toFixed(2)}</Text>
+          </View>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={styles.summaryText}>Tax</Text>
+            <Text style={styles.summaryText}>${tax.toFixed(2)}</Text>
+          </View>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={styles.summaryText}>Total</Text>
+            <Text style={styles.total}>${total.toFixed(2)}</Text>
+          </View>
         </View>
         <TouchableOpacity
           style={styles.checkoutButton}

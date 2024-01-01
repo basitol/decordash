@@ -99,13 +99,13 @@ const FavoritesScreen = () => {
         <Text style={styles.emptyMessage}>No favorites added yet.</Text>
       )}
 
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.clearFavoritesButton}
         onPress={clearFavorites}>
         <Text style={styles.clearFavoritesButtonText}>
           Delete All Favorites
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </SafeAreaView>
   );
 };

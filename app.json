@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "DecorDash",
-    "slug": "DecorDash",
+    "name": "RNCourse",
+    "slug": "RNCourse",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/decor.PNG",

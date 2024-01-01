@@ -48,7 +48,12 @@ const ProfileScreen = ({navigation}) => {
 
   const userLogout = async () => {
     try {
-      await AsyncStorage.multiRemove(['id', `user${userData.id}`, 'cartCount']);
+      await AsyncStorage.multiRemove([
+        'id',
+        `user${userData.id}`,
+        'cartCount',
+        'cart',
+      ]);
       setUserLogin(false);
       setUserData(null);
       navigation.navigate('HomeScreen'); // Navigate to HomeScreen after logout

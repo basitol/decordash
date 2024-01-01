@@ -165,7 +165,7 @@ const SignUpScreen = ({navigation}) => {
                           setFieldTouched('email');
                         }}
                         onBlur={() => setFieldTouched('email', '')}
-                        value={values.email}
+                        value={values.email.toLowerCase()}
                         autocapitalize='none'
                         autoCorrect={false}
                         style={{flex: 1}}

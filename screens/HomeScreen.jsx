@@ -1,4 +1,4 @@
-import {useEffect, useState, useCallback} from 'react';
+import {useState, useCallback} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Ionicons, Fontisto} from '@expo/vector-icons';
@@ -37,7 +37,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{marginBottom: 50}}>
       <View style={styles.appBarWrapper}>
         <View style={styles.appBar}>
           <Ionicons name='location-outline' size={24} />

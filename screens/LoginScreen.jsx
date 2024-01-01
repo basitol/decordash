@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
 
 const LoginScreen = ({navigation}) => {
   const [responseData, setResponseData] = useState(null);
-  const [obscureText, setObscureText] = useState(false);
+  const [obscureText, setObscureText] = useState(true);
   const {handleLogin, loader, error} = useLogin();
 
   const onLoginSuccess = () => {
@@ -107,7 +107,7 @@ const LoginScreen = ({navigation}) => {
                           setFieldTouched('email');
                         }}
                         onBlur={() => setFieldTouched('email', '')}
-                        value={values.email}
+                        value={values.email.toLowerCase()}
                         autocapitalize='none'
                         autoCorrect={false}
                         style={{flex: 1}}

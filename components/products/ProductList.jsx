@@ -1,4 +1,4 @@
-import {FlatList, ActivityIndicator, Text, View} from 'react-native';
+import {FlatList, ActivityIndicator, View, ScrollView} from 'react-native';
 import React from 'react';
 import styles from './productList.style';
 import useFetch from '../../hook/useFetch';
@@ -6,7 +6,7 @@ import {COLORS, SIZES} from '../../constants';
 import ProductCardView from './ProductCardView';
 
 const ProductList = () => {
-  const {data, isLoading, error, refetch} = useFetch();
+  const {data, isLoading} = useFetch();
 
   if (isLoading) {
     return (
@@ -17,15 +17,7 @@ const ProductList = () => {
   }
 
   return (
-    <View style={styles.container}>
-      {/* <FlatList
-        data={data}
-        numColumns={2}
-        renderItem={({item}) => <ProductCardView item={item} />}
-        contentContainerStyle={styles.container}
-        ItemSeparatorComponent={() => <View style={styles.separator} />}
-      /> */}
-
+    <ScrollView style={styles.container}>
       <FlatList
         data={data}
         numColumns={2} // Ensure two columns are displayed
@@ -35,7 +27,7 @@ const ProductList = () => {
         // Add keyExtractor for unique keys
         keyExtractor={(item, index) => item.id || index.toString()}
       />
-    </View>
+    </ScrollView>
   );
 };
 
