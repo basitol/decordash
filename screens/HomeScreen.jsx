@@ -37,7 +37,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{marginBottom: 50}}>
+    <SafeAreaView style={{marginBottom: 80}}>
       <View style={styles.appBarWrapper}>
         <View style={styles.appBar}>
           <Ionicons name='location-outline' size={24} />
