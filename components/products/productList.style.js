@@ -1,21 +1,5 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {SIZES} from '../../constants';
-
-// const styles = StyleSheet.create({
-//   loadingContainer: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     alignContent: 'center',
-//   },
-//   container: {
-//     alignItems: 'center',
-//     paddingLeft: SIZES.small / 2,
-//   },
-//   separator: {
-//     height: 16,
-//   },
-// });
 
 // styles/productList.style.js
 const styles = StyleSheet.create({
@@ -26,7 +10,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flexGrow: 1, // Ensure the container takes the available space
-    paddingTop: SIZES.xxlarge,
+    paddingTop: Platform.OS === 'ios' ? SIZES.large + 4 : SIZES.xxlarge,
     paddingHorizontal: '1%',
     paddingBottom: 60,
   },
