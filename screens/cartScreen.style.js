@@ -1,5 +1,5 @@
 // styles/cartScreen.style.js
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {COLORS, SIZES} from '../constants';
 
 const styles = StyleSheet.create({
@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    marginHorizontal: 20,
   },
   upperRow: {
     flexDirection: 'row',
@@ -17,6 +16,9 @@ const styles = StyleSheet.create({
     paddingVertical: SIZES.small,
     width: SIZES.width - 44,
     zIndex: 999,
+    // marginTop: 30,
+    marginTop: Platform.OS === 'ios' ? 12 : 30,
+    marginHorizontal: 20,
   },
   headerText: {
     fontFamily: 'bold',
@@ -31,21 +33,23 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     borderRadius: SIZES.small,
     overflow: 'hidden',
-    shadowColor: COLORS.black,
-    shadowOffset: {width: 0, height: 4},
-    shadowOpacity: 0.3,
+    shadowColor: COLORS.gray,
+    shadowOffset: {width: 1, height: 1},
+    shadowOpacity: 0.1,
     shadowRadius: 5,
-    elevation: 8,
+    elevation: 2,
+    marginHorizontal: 20,
   },
   productImage: {
     width: 80,
     height: 80,
-    borderRadius: 16,
+    borderRadius: SIZES.small,
     resizeMode: 'cover',
   },
   itemDetails: {
     flex: 1,
     paddingHorizontal: SIZES.small,
+    gap: 6,
   },
   itemTitle: {
     fontSize: SIZES.medium,
@@ -56,10 +60,10 @@ const styles = StyleSheet.create({
     fontSize: SIZES.medium,
     fontWeight: 'light',
     color: COLORS.gray,
-    paddingTop: 8,
+    // paddingTop: 8,
   },
   price: {
-    paddingTop: 8,
+    // paddingTop: 8,
     fontSize: SIZES.medium,
     color: COLORS.gray,
     marginBottom: SIZES.small,
@@ -97,6 +101,7 @@ const styles = StyleSheet.create({
     padding: SIZES.medium,
     backgroundColor: COLORS.white,
     borderRadius: SIZES.small,
+    marginHorizontal: 20,
   },
   summaryText: {
     fontSize: SIZES.medium,
@@ -118,6 +123,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: SIZES.large,
     marginBottom: SIZES.large,
+    marginHorizontal: 20,
   },
   checkoutButtonText: {
     color: COLORS.white,

@@ -102,19 +102,19 @@ const CartScreen = () => {
 
   const renderHeader = () => {
     return (
-      <View>
-        <View style={styles.upperRow}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons
-              name='chevron-back-circle'
-              size={30}
-              color={COLORS.primary}
-            />
-          </TouchableOpacity>
-          <Text style={styles.headerText}>Cart</Text>
-        </View>
-        {/* Any other header content */}
+      // <View>
+      <View style={styles.upperRow}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Ionicons
+            name='chevron-back-circle'
+            size={30}
+            color={COLORS.primary}
+          />
+        </TouchableOpacity>
+        <Text style={styles.headerText}>Cart</Text>
       </View>
+      // {/* Any other header content */}
+      // </View>
     );
   };
 
