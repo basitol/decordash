@@ -4,7 +4,7 @@
     "slug": "RNCourse",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/decor.PNG",
+    "icon": "./assets/decor.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
