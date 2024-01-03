@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {COLORS, SIZES} from '../constants';
 
 const styles = StyleSheet.create({
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: COLORS.primary,
     borderRadius: SIZES.large,
-    top: SIZES.large,
+    top: Platform.OS === 'ios' ? 0 : 42,
     zIndex: 999,
   },
   heading: {
