@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.lightWhite,
   },
   upperRow: {
-    width: SIZES.width - 50,
-    marginHorizontal: SIZES.large,
+    width: SIZES.width - 20,
+    marginHorizontal: SIZES.small,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
