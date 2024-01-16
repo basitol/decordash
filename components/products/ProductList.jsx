@@ -26,6 +26,7 @@ const ProductList = () => {
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         // Add keyExtractor for unique keys
         keyExtractor={(item, index) => item.id || index.toString()}
+        showsHorizontalScrollIndicator={false}
       />
     </ScrollView>
   );
