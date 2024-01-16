@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Toast from 'react-native-toast-message';
 
 const usePostData = (url, onSuccess, onSuccessCallback) => {
   const [response, setResponse] = useState(null);
@@ -35,17 +36,18 @@ const usePostData = (url, onSuccess, onSuccessCallback) => {
 
     try {
       const result = await axios.post(url, data);
-      console.log('API Response:', result.data.data);
       setResponse(result.data.data);
 
-      // Update cart count and cart data in AsyncStorage if the URL is related to cart operations
       if (url.includes('/cart')) {
         await updateCartCountInStorage(result.data.data);
         await updateCartInStorage(result.data.data);
-        console.log('Updated Cart Count:', result.data.data);
+        Toast.show({
+          type: 'success',
+          text1: 'Cart Updated',
+          text2: 'Item added to cart successfully!',
+        });
       }
 
-      // Call onSuccess callback if provided
       if (onSuccess && typeof onSuccess === 'function') {
         onSuccess(result.data.data);
       }
@@ -90,20 +92,19 @@ const usePostData = (url, onSuccess, onSuccessCallback) => {
     try {
       const removeUrl = `https://coffee-booking.onrender.com/api/cart/remove`;
       const result = await axios.post(removeUrl, productToRemove);
-      // console.log('API Response:', result);
       setResponse(result.data.data);
 
-      // Update cart count and cart data in AsyncStorage if the URL is related to cart operations
       if (removeUrl.includes('/cart')) {
         await updateCartCountInStorage(result.data.data);
         await updateCartInStorage(result.data.data);
-        console.log('Updated Cart Data:', result.data.data);
+        Toast.show({
+          type: 'success',
+          text1: 'Cart Updated',
+          text2: 'Item removed from cart successfully!',
+        });
       }
 
-      // Call the onSuccessCallback if provided
       if (onSuccess && typeof onSuccess === 'function') {
-        // Fetch the updated cart items after storage updates
-        // await fetchCartItems();
         onSuccess(result.data.data);
       }
     } catch (e) {
@@ -114,7 +115,33 @@ const usePostData = (url, onSuccess, onSuccessCallback) => {
     }
   };
 
-  return {response, isLoading, error, postData, removeItemFromCart};
+  const deleteCart = async userId => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const deleteUrl = `https://coffee-booking.onrender.com/api/cart/${userId}`;
+      const result = await axios.delete(deleteUrl);
+      console.log('Cart Deleted:', result.data);
+
+      setResponse(result.data);
+
+      // Clear cart count and cart data in AsyncStorage
+      await AsyncStorage.removeItem('cart');
+      await AsyncStorage.removeItem('cartCount');
+
+      if (onSuccess && typeof onSuccess === 'function') {
+        onSuccess(result.data);
+      }
+    } catch (e) {
+      console.error('Error in deleteCart:', e.message);
+      setError(e);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return {response, isLoading, error, postData, removeItemFromCart, deleteCart};
 };
 
 const fetchCartData = async userId => {
