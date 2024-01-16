@@ -12,7 +12,7 @@ import {
   Alert,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {BackBtn, Button} from '../components';
+import {UpperRow, Button} from '../components';
 import {COLORS} from '../constants';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -63,7 +63,7 @@ const LoginScreen = ({navigation}) => {
       <ScrollView>
         <SafeAreaView style={styles.container}>
           <View>
-            <BackBtn onPress={() => navigation.navigate('ProfileScreen')} />
+            <UpperRow onPress={() => navigation.navigate('ProfileScreen')} />
 
             <Image
               source={require('../assets/images/bk.png')}
