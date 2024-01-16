@@ -13,8 +13,12 @@ import {
   FavoritesScreen,
   OrderScreen,
   SignUpScreen,
+  PaymentScreen,
+  BillingScreen,
+  OrderDetails,
 } from './screens';
 import {StripeProvider} from '@stripe/stripe-react-native';
+import Toast from 'react-native-toast-message';
 
 const Stack = createNativeStackNavigator();
 
@@ -53,57 +57,80 @@ export default function App() {
     return null; // Return nothing or some loading component
   }
 
+  const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name='Bottom Navigation'
-          component={BottomTabNavigation}
-          options={{headerShown: false}}
-        />
+    <StripeProvider publishableKey={stripePublishableKey}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name='Bottom Navigation'
+            component={BottomTabNavigation}
+            options={{headerShown: false}}
+          />
 
-        <Stack.Screen
-          name='CartScreen'
-          component={CartScreen}
-          options={{headerShown: false}}
-        />
+          <Stack.Screen
+            name='CartScreen'
+            component={CartScreen}
+            options={{headerShown: false}}
+          />
 
-        <Stack.Screen
-          name='ProductDetailScreen'
-          component={ProductDetailScreen}
-          options={{headerShown: false}}
-        />
+          <Stack.Screen
+            name='ProductDetailScreen'
+            component={ProductDetailScreen}
+            options={{headerShown: false}}
+          />
 
-        <Stack.Screen
-          name='NewRivalScreen'
-          component={NewRivalScreen}
-          options={{headerShown: false}}
-        />
+          <Stack.Screen
+            name='NewRivalScreen'
+            component={NewRivalScreen}
+            options={{headerShown: false}}
+          />
 
-        <Stack.Screen
-          name='LoginScreen'
-          component={LoginScreen}
-          options={{headerShown: false}}
-        />
+          <Stack.Screen
+            name='LoginScreen'
+            component={LoginScreen}
+            options={{headerShown: false}}
+          />
 
-        <Stack.Screen
-          name='OrderScreen'
-          component={OrderScreen}
-          options={{headerShown: false}}
-        />
+          <Stack.Screen
+            name='OrderScreen'
+            component={OrderScreen}
+            options={{headerShown: false}}
+          />
 
-        <Stack.Screen
-          name='FavoritesScreen'
-          component={FavoritesScreen}
-          options={{headerShown: false}}
-        />
+          <Stack.Screen
+            name='FavoritesScreen'
+            component={FavoritesScreen}
+            options={{headerShown: false}}
+          />
 
-        <Stack.Screen
-          name='SignUpScreen'
-          component={SignUpScreen}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen
+            name='SignUpScreen'
+            component={SignUpScreen}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name='PaymentScreen'
+            component={PaymentScreen}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name='BillingScreen'
+            component={BillingScreen}
+            options={{headerShown: false}}
+          />
+
+          <Stack.Screen
+            name='OrderDetails'
+            component={OrderDetails}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <Toast ref={ref => Toast.setRef(ref)} />
+    </StripeProvider>
   );
 }
