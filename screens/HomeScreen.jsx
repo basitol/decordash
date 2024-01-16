@@ -37,7 +37,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView showsHorizontalScrollIndicator={false}>
       <View style={styles.appBarWrapper}>
         <View style={styles.appBar}>
           <Ionicons name='location-outline' size={24} />
@@ -60,7 +60,7 @@ const HomeScreen = () => {
         </View>
       </View>
 
-      <ScrollView>
+      <ScrollView showsHorizontalScrollIndicator={false}>
         <Welcome />
         <Carousel />
         <Headings />
