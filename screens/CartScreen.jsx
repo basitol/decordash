@@ -123,24 +123,25 @@ const CartScreen = () => {
       <View>
         {/* Order Summary */}
         <View style={styles.orderSummary}>
-          <Text style={styles.orderInfoHeader}>Order Info</Text>
+          <Text style={styles.orderInfoHeader}>Cart Info</Text>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={styles.summaryText}>Subtotal</Text>
             <Text style={styles.summaryText}>${subtotal.toFixed(2)}</Text>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.summaryText}>Tax</Text>
-            <Text style={styles.summaryText}>${tax.toFixed(2)}</Text>
-          </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.summaryText}>Total</Text>
-            <Text style={styles.total}>${total.toFixed(2)}</Text>
-          </View>
+
+          <Text>Delivery Fee not included yet</Text>
         </View>
         <TouchableOpacity
           style={styles.checkoutButton}
-          onPress={() => navigation.navigate('PaymentScreen')}>
-          <Text style={styles.checkoutButtonText}>Checkout</Text>
+          onPress={() =>
+            navigation.navigate('BillingScreen', {
+              subtotal,
+              tax,
+              total,
+              totalAmount: total,
+            })
+          }>
+          <Text style={styles.checkoutButtonText}>Proceed To Checkout</Text>
         </TouchableOpacity>
       </View>
     );
