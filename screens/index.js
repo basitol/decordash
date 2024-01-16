@@ -8,3 +8,6 @@ export {default as LoginScreen} from './LoginScreen';
 export {default as OrderScreen} from './OrderScreen';
 export {default as FavoritesScreen} from './FavoritesScreen';
 export {default as SignUpScreen} from './SignUpScreen';
+export {default as PaymentScreen} from './PaymentScreen';
+export {default as BillingScreen} from './BillingScreen';
+export {default as OrderDetails} from './OrderDetails';
