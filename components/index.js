@@ -5,4 +5,4 @@ export {default as ProductRow} from './products/ProductRow';
 export {default as ProductList} from './products/ProductList';
 export {default as SearchTile} from './products/SearchTile';
 export {default as Button} from './Button';
-export {default as BackBtn} from './BackBtn';
+export {default as UpperRow} from './UpperRow';
