@@ -13,7 +13,7 @@ import {
   Alert,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {BackBtn, Button} from '../components';
+import {UpperRow, Button} from '../components';
 import {SIZES, COLORS} from '../constants';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -85,7 +85,7 @@ const SignUpScreen = ({navigation}) => {
       <ScrollView>
         <SafeAreaView style={styles.container}>
           <View>
-            <BackBtn onPress={() => navigation.goBack()} />
+            <UpperRow onPress={() => navigation.goBack()} />
 
             <Image
               source={require('../assets/images/bk.png')}

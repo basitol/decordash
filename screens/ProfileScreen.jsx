@@ -1,4 +1,11 @@
-import {Image, Text, View, TouchableOpacity, Alert} from 'react-native';
+import {
+  Image,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  ScrollView,
+} from 'react-native';
 import {useState, useEffect, useCallback} from 'react';
 import {StatusBar} from 'expo-status-bar';
 import styles from './profileScreen.style';
@@ -155,72 +162,74 @@ const ProfileScreen = ({navigation}) => {
           {userLogin === false ? (
             <></>
           ) : (
-            <View style={styles.menuWrapper}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('FavoritesScreen')}>
-                <View style={styles.menuItem(0.2)}>
-                  <MaterialCommunityIcons
-                    name='heart-outline'
-                    size={24}
-                    color={COLORS.primary}
-                  />
-                  <Text style={styles.menuText}>Favorites</Text>
-                </View>
-              </TouchableOpacity>
+            <ScrollView>
+              <View style={styles.menuWrapper}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('FavoritesScreen')}>
+                  <View style={styles.menuItem(0.2)}>
+                    <MaterialCommunityIcons
+                      name='heart-outline'
+                      size={24}
+                      color={COLORS.primary}
+                    />
+                    <Text style={styles.menuText}>Favorites</Text>
+                  </View>
+                </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => navigation.navigate('OrderScreen')}>
-                <View style={styles.menuItem(0.2)}>
-                  <MaterialCommunityIcons
-                    name='truck-delivery-outline'
-                    size={24}
-                    color={COLORS.primary}
-                  />
-                  <Text style={styles.menuText}>Orders</Text>
-                </View>
-              </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('OrderScreen')}>
+                  <View style={styles.menuItem(0.2)}>
+                    <MaterialCommunityIcons
+                      name='truck-delivery-outline'
+                      size={24}
+                      color={COLORS.primary}
+                    />
+                    <Text style={styles.menuText}>Orders</Text>
+                  </View>
+                </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => navigation.navigate('CartScreen')}>
-                <View style={styles.menuItem(0.2)}>
-                  <SimpleLineIcons
-                    name='bag'
-                    size={24}
-                    color={COLORS.primary}
-                  />
-                  <Text style={styles.menuText}>Cart</Text>
-                </View>
-              </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('CartScreen')}>
+                  <View style={styles.menuItem(0.2)}>
+                    <SimpleLineIcons
+                      name='bag'
+                      size={24}
+                      color={COLORS.primary}
+                    />
+                    <Text style={styles.menuText}>Cart</Text>
+                  </View>
+                </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => clearCache()}>
-                <View style={styles.menuItem(0.2)}>
-                  <MaterialCommunityIcons
-                    name='cached'
-                    size={24}
-                    color={COLORS.primary}
-                  />
-                  <Text style={styles.menuText}>Clear cache</Text>
-                </View>
-              </TouchableOpacity>
+                <TouchableOpacity onPress={() => clearCache()}>
+                  <View style={styles.menuItem(0.2)}>
+                    <MaterialCommunityIcons
+                      name='cached'
+                      size={24}
+                      color={COLORS.primary}
+                    />
+                    <Text style={styles.menuText}>Clear cache</Text>
+                  </View>
+                </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => logout()}>
-                <View style={styles.menuItem(0.2)}>
-                  <AntDesign name='logout' size={24} color={COLORS.primary} />
-                  <Text style={styles.menuText}>Log out</Text>
-                </View>
-              </TouchableOpacity>
+                <TouchableOpacity onPress={() => logout()}>
+                  <View style={styles.menuItem(0.2)}>
+                    <AntDesign name='logout' size={24} color={COLORS.primary} />
+                    <Text style={styles.menuText}>Log out</Text>
+                  </View>
+                </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => deleteAccount()}>
-                <View style={styles.menuItem(0.2)}>
-                  <AntDesign
-                    name='deleteuser'
-                    size={24}
-                    color={COLORS.primary}
-                  />
-                  <Text style={styles.menuText}>Delete Account</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
+                <TouchableOpacity onPress={() => deleteAccount()}>
+                  <View style={styles.menuItem(0.2)}>
+                    <AntDesign
+                      name='deleteuser'
+                      size={24}
+                      color={COLORS.primary}
+                    />
+                    <Text style={styles.menuText}>Delete Account</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
           )}
         </View>
       </View>
