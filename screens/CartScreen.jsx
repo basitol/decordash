@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   View,
   Text,
@@ -26,6 +26,8 @@ const CartScreen = () => {
       fetchCartItems();
     }, []),
   );
+
+  const isCartEmpty = cartItems.length === 0;
 
   const fetchCartItems = async () => {
     try {
@@ -100,6 +102,22 @@ const CartScreen = () => {
 
   const {subtotal, tax, total} = calculateOrderSummary(cartItems);
 
+  const handleCheckoutPress = () => {
+    if (isCartEmpty) {
+      Alert.alert(
+        'Empty Cart',
+        'Your cart is empty. Add some items before checking out.',
+      );
+    } else {
+      navigation.navigate('BillingScreen', {
+        subtotal,
+        tax,
+        total,
+        totalAmount: total,
+      });
+    }
+  };
+
   const renderHeader = () => {
     return (
       // <View>
@@ -133,14 +151,8 @@ const CartScreen = () => {
         </View>
         <TouchableOpacity
           style={styles.checkoutButton}
-          onPress={() =>
-            navigation.navigate('BillingScreen', {
-              subtotal,
-              tax,
-              total,
-              totalAmount: total,
-            })
-          }>
+          // onPress={() =>
+          onPress={handleCheckoutPress}>
           <Text style={styles.checkoutButtonText}>Proceed To Checkout</Text>
         </TouchableOpacity>
       </View>
