@@ -6,16 +6,18 @@ import {
   FlatList,
   SafeAreaView,
   View,
+  Image,
 } from 'react-native';
 import {useOrder} from '../hook/useOrder';
 import useCheckUser from '../hook/useCheckUser';
 import {useFocusEffect} from '@react-navigation/native';
-import styles from './orderScreen.style'; // Ensure this path is correct
+import styles from './orderScreen.style';
 import {UpperRow} from '../components';
 
 const OrderScreen = ({navigation}) => {
   const {getUserOrders, orders, isLoading, error} = useOrder();
   const {userData} = useCheckUser();
+  console.error(error);
 
   useFocusEffect(
     useCallback(() => {
@@ -24,18 +26,6 @@ const OrderScreen = ({navigation}) => {
       }
     }, [userData, getUserOrders]),
   );
-
-  if (isLoading) {
-    return (
-      <View style={styles.centeredView}>
-        <ActivityIndicator size='large' color='#0000ff' />
-      </View>
-    );
-  }
-
-  if (error) {
-    return <Text style={styles.errorText}>Error: {error}</Text>;
-  }
 
   const getStatusIndicator = status => {
     const isSuccess =
@@ -57,16 +47,52 @@ const OrderScreen = ({navigation}) => {
   const renderOrderItem = ({item}) => (
     <TouchableOpacity
       style={styles.orderItem}
-      onPress={() => navigation.navigate('OrderDetails', {item, navigation})}>
+      onPress={() => navigation.navigate('OrderDetails', {item})}>
       <Text style={styles.orderTitle}>Order ID: {item._id}</Text>
       <Text style={styles.detailText}>Total: ${item.total.toFixed(2)}</Text>
-      {/* <Text style={styles.detailText}>Status:
-         {item.paymentStatus}</Text> */}
       {getStatusIndicator(item.paymentStatus)}
       <Text style={styles.detailText}>Delivered: {item.delivery_status}</Text>
-      {/* <Ionicons name='chevron-forward-circle' size={24} style={styles.icon} /> */}
     </TouchableOpacity>
   );
+
+  if (isLoading) {
+    return (
+      <View style={styles.centeredView}>
+        <ActivityIndicator size='large' color='#0000ff' />
+      </View>
+    );
+  }
+
+  if (error) {
+    // Assuming error is an object with a message property
+    return (
+      <Image
+        source={require('../assets/images/emptycart.png')}
+        style={styles.emptyImage}
+      />
+    );
+  }
+
+  if (!orders || orders.length === 0) {
+    return (
+      <View style={styles.centeredView}>
+        <Text style={styles.emptyOrdersText}>You have no orders yet.</Text>
+        <Text style={styles.instructionsText}>
+          Start by adding items to your cart and then proceed to checkout.
+        </Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ProductList')}
+          style={styles.actionButton}>
+          <Text style={styles.actionButtonText}>Browse Products</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Cart')}
+          style={styles.actionButton}>
+          <Text style={styles.actionButtonText}>Go to Cart</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.safeArea}>

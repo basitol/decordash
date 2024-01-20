@@ -41,13 +41,22 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
   },
   errorText: {
-    color: 'red',
-    textAlign: 'center',
-    marginTop: 20,
+    color: 'red', // Red color for errors
+    fontSize: 16, // Size of the text
+    fontWeight: 'bold', // Make the text bold
+    textAlign: 'center', // Align text to the center
+    marginTop: 120, // Margin at the top for spacing
+    paddingHorizontal: 10, // Horizontal padding
   },
   payment: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  emptyImage: {
+    resizeMode: 'contain',
+    width: SIZES.width,
+    height: SIZES.height - 50,
+    opacity: 0.9,
   },
   statusIndicator: {
     flexDirection: 'row',
